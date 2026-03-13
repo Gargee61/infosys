@@ -1,0 +1,23 @@
+/* Logout Specific Styles */
+.logout-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.logout-title {
+    font-size: 1.8rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.logout-msg {
+    color: #64748B;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.logout-actions {
+    display: flex;
+    justify-content: center;
+}

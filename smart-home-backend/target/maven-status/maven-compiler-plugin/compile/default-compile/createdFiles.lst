@@ -1,0 +1,9 @@
+com\smarthome\energy\controller\AuthController.class
+com\smarthome\energy\config\SecurityConfig.class
+com\smarthome\energy\dto\LoginRequest.class
+com\smarthome\energy\repository\UserRepository.class
+com\smarthome\energy\dto\SignupRequest.class
+com\smarthome\energy\EnergyBackendApplication.class
+com\smarthome\energy\service\EmailService.class
+com\smarthome\energy\controller\ForgotPasswordController.class
+com\smarthome\energy\model\User.class

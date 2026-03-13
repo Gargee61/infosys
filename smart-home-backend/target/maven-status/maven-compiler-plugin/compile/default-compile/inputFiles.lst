@@ -1,0 +1,9 @@
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\dto\LoginRequest.java
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\service\EmailService.java
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\config\SecurityConfig.java
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\dto\SignupRequest.java
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\model\User.java
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\controller\ForgotPasswordController.java
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\repository\UserRepository.java
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\controller\AuthController.java
+D:\infosys\smart-home-backend\src\main\java\com\smarthome\energy\EnergyBackendApplication.java
