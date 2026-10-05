@@ -204,17 +204,6 @@ Voice assistant support
 
 ---
 
-👨‍💻 Team Members
-
-Muskan Bhatt
-
-Hithashree K V
-
-Gargee Badgaiyan
-
-
-
----
 
 🙏 Acknowledgement
 
