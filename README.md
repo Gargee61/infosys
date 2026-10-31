@@ -1,4 +1,4 @@
-##🏠 Smart Home Energy Management System
+##🏠 Smart Home Energy Management System##
 
 A full-stack web application that helps users monitor, control, and optimize energy usage in a smart home environment.
 The system provides real-time monitoring, device control, and energy analytics through an interactive dashboard.
