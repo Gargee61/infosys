@@ -1,0 +1,10 @@
+{
+  "name": "smart-home-backend",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "mvn spring-boot:run",
+    "build": "mvn package",
+    "test": "mvn test"
+  }
+}
