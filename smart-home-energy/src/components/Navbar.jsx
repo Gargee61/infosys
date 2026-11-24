@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, Home, Info, User, LogOut, Sun, Moon } from 'lucide-react';
+import { Menu, X, Zap, Activity, LayoutDashboard, LogOut } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -8,10 +8,6 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-
-    // Hide navbar on login/signup pages? User asked for Navbar link to login.
-    // So Navbar should be visible. But maybe simplified on Login/Signup.
-    // "Navigation bar at top - Links: Home | About | Sign Up | Login | Logout"
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,70 +21,66 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Check auth status (mock)
     const isAuthenticated = localStorage.getItem('user');
 
     const handleLogout = () => {
         localStorage.removeItem('user');
-        navigate('/logout');
+        navigate('/login');
     };
 
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${(['/', '/login', '/signup'].includes(location.pathname) && !isAuthenticated) ? 'on-landing' : ''}`}>
+        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container nav-content">
-                <div className="logo" onClick={() => navigate('/')}>
-                    <Sun className="logo-icon" size={28} />
-                    <span className="logo-text">Energy<span className="highlight">Smart</span></span>
+                <div className="logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+                    <Zap className="logo-icon" size={28} />
+                    <span className="logo-text">FX<span className="text-secondary">ENERGY</span></span>
                 </div>
 
                 <div className="desk-menu">
                     <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                        Home
+                        Command
                     </NavLink>
                     <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                        About
+                        Vision
                     </NavLink>
-                    <NavLink to="/contact" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                        Contact
-                    </NavLink>
-                    {location.pathname === '/' && (
-                        <a href="#faqs" className="nav-link">
-                            FAQs
-                        </a>
-                    )}
-                    <a href="#testimonials" className="nav-link">
-                        Testimonials
-                    </a>
-
+                    
                     {!isAuthenticated ? (
                         <>
-                            <NavLink to="/signup" className="nav-link btn btn-primary nav-btn">Sign Up</NavLink>
-                            <NavLink to="/login" className="nav-link btn btn-secondary nav-btn text-blue">Login</NavLink>
+                            <NavLink to="/login" className="nav-link">Login</NavLink>
+                            <NavLink to="/signup" className="btn btn-primary">Join Network</NavLink>
                         </>
                     ) : (
-                        <button onClick={handleLogout} className="nav-link btn btn-secondary nav-btn logout-btn">
-                            Logout
-                        </button>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                             <NavLink to="/dashboard" className="nav-link">
+                                <LayoutDashboard size={18} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
+                                Dash
+                             </NavLink>
+                             <button onClick={handleLogout} className="btn btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <LogOut size={16} />
+                                Terminate
+                             </button>
+                        </div>
                     )}
                 </div>
 
                 <div className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </div>
 
-                {/* Mobile Menu */}
+                {/* Mobile Menu Overlay */}
                 <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
-                    <NavLink to="/" onClick={() => setIsOpen(false)} className="mobile-link">Home</NavLink>
-                    <NavLink to="/about" onClick={() => setIsOpen(false)} className="mobile-link">About</NavLink>
-                    <NavLink to="/contact" onClick={() => setIsOpen(false)} className="mobile-link">Contact</NavLink>
-                    <a href="#testimonials" onClick={() => setIsOpen(false)} className="mobile-link">Testimonials</a>
+                    <NavLink to="/" onClick={() => setIsOpen(false)} className="mobile-link">Command Center</NavLink>
+                    <NavLink to="/about" onClick={() => setIsOpen(false)} className="mobile-link">The Vision</NavLink>
                     {!isAuthenticated ? (
                         <>
-                            <NavLink to="/signup" onClick={() => setIsOpen(false)} className="mobile-link">Sign Up</NavLink>
-                            <NavLink to="/login" onClick={() => setIsOpen(false)} className="mobile-link">Login</NavLink>
+                            <NavLink to="/login" onClick={() => setIsOpen(false)} className="mobile-link">Login Access</NavLink>
+                            <NavLink to="/signup" onClick={() => setIsOpen(false)} className="mobile-link">Join Network</NavLink>
                         </>
                     ) : (
-                        <button onClick={() => { handleLogout(); setIsOpen(false); }} className="mobile-link logout">Logout</button>
+                        <button onClick={() => { handleLogout(); setIsOpen(false); }} className="mobile-link logout">
+                            <LogOut size={20} style={{ verticalAlign: 'middle', marginRight: '10px' }} />
+                            Terminate Session
+                        </button>
                     )}
                 </div>
             </div>

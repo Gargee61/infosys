@@ -1,18 +1,20 @@
-/* Navbar.css */
+/* Navbar.css - Premium Glassmorphism */
+
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     padding: 1.5rem 0;
 }
 
 .scrolled {
-    background-color: var(--white);
+    background: rgba(11, 14, 20, 0.7);
+    backdrop-filter: blur(20px);
     padding: 1rem 0;
-    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .nav-content {
@@ -22,160 +24,136 @@
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gray-800);
-}
-
-.logo-icon {
-    margin-right: 0.5rem;
-    vertical-align: middle;
-    color: var(--primary);
-}
-
-.on-landing:not(.scrolled) .logo-icon {
-    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
 }
 
 .logo-text {
-    font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 800;
     color: var(--text);
+    letter-spacing: -0.02em;
 }
 
-.logo:hover .logo-icon {
-    transform: rotate(180deg);
-    transition: transform 0.5s ease;
+.logo-icon {
+    color: var(--primary);
+    filter: drop-shadow(0 0 8px var(--primary));
 }
 
 .desk-menu {
     display: none;
-    /* Mobile first */
 }
 
-/* Desktop Menu */
 @media (min-width: 768px) {
     .desk-menu {
         display: flex;
-        gap: 2rem;
+        gap: 2.5rem;
         align-items: center;
     }
 
     .nav-link {
-        font-weight: 500;
+        font-weight: 600;
         text-decoration: none;
-        color: var(--gray-600);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        transition: var(--transition);
         position: relative;
     }
 
     .nav-link:hover {
+        color: var(--text);
+    }
+
+    .nav-link.active {
         color: var(--primary);
     }
 
-    .nav-link.active:not(.nav-btn) {
-        color: var(--primary);
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+        box-shadow: var(--shadow-neon);
     }
 }
 
-/* Mobile Menu */
+/* Mobile Toggle */
 .mobile-toggle {
     display: block;
     cursor: pointer;
+    color: var(--text);
 }
 
 .mobile-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--white);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgba(11, 14, 20, 0.95);
+    backdrop-filter: blur(30px);
+    padding: 100px 40px;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    gap: 32px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-left: 1px solid var(--glass-border);
     z-index: 999;
 }
 
-.mobile-link {
-    padding: 1rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--gray-700);
-    text-decoration: none;
-    border-bottom: 1px solid var(--gray-100);
+.mobile-menu.open {
+    transform: translateX(0);
 }
 
-.mobile-link:last-child {
-    border-bottom: none;
+.mobile-link {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
 }
 
 .mobile-link.logout {
-    color: var(--danger);
-}
-
-.mobile-menu.open {
-    transform: translateY(0);
+    color: var(--error-color);
+    margin-top: auto;
 }
 
 @media (min-width: 768px) {
-    .mobile-toggle {
-        display: none;
-    }
-
-    .mobile-menu {
+    .mobile-toggle, .mobile-menu {
         display: none;
     }
 }
 
-/* Specific styling for landing page navbar when not scrolled */
-.on-landing:not(.scrolled) .logo-text {
-    color: #fff;
+/* Button Refinement in Nav */
+.navbar .btn {
+    padding: 10px 22px;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
 }
 
-.on-landing:not(.scrolled) .nav-link {
-    color: rgba(255, 255, 255, 0.8);
+.navbar .btn-primary {
+    background: var(--primary);
+    color: #000;
+    box-shadow: var(--shadow-neon);
 }
 
-.on-landing:not(.scrolled) .nav-link:hover {
-    color: #fff;
+.navbar .btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    backdrop-filter: blur(10px);
 }
 
-.on-landing:not(.scrolled) .nav-link.active:not(.nav-btn) {
-    color: var(--primary);
-}
-
-.on-landing:not(.scrolled) .text-blue {
-    color: #fff !important;
-    border-color: #fff;
-}
-
-/* Ensure Login/Logout buttons are visible when on a white background (Dashboard or Scrolled) */
-.navbar:not(.on-landing) .btn-secondary,
-.scrolled .btn-secondary {
-    color: var(--primary) !important;
-    border-color: var(--primary) !important;
-}
-
-.scrolled .nav-link {
-    color: var(--gray-600) !important;
-}
-
-.scrolled .nav-link:hover,
-.scrolled .nav-link.active {
-    color: var(--primary) !important;
-}
-
-.scrolled .text-blue {
-    color: var(--primary) !important;
-    border-color: var(--primary) !important;
-}
-
-.scrolled .text-blue:hover {
-    background-color: var(--primary);
-    color: var(--white) !important;
+.navbar .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
 }

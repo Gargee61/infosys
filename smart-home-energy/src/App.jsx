@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp';
 import Logout from './pages/Logout';
 import Contact from './pages/Contact';
 import ResetPassword from './pages/ResetPassword';
+import GLSLDemo from './components/GLSLDemo';
 
 const AppContent = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const AppContent = () => {
           <Route path="/logout" element={<Logout />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/glsl-demo" element={<GLSLDemo />} />
         </Routes>
       </main>
       {!isAuthPage && <Footer />}
